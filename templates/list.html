@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block customcss %}
+
+<style>
+  body {
+    padding-top: 2.5rem;
+  }
+</style>
+
+{% endblock customcss %}
+
+{% block content %}
+
+<div class="jumbotron">
+    <div class="container">
+        <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-purple rounded shadow-sm">
+            <div class="lh-100">
+                <h1 class="mb-0 lh-100" style="color:gray;">{{ page_context.title }}</h1>
+                <p style="color:black;">{{ page_context.title_about }}</p>
+            </div>
+        </div>
+        <div class="my-3 p-3 bg-white rounded shadow-sm">
+            {% if object_list|length == 0 %}
+            <p>検索結果がありませんでした。</p>
+            {% else %}
+            {% for item in object_list %}
+            <div class="alert alert-light border border-secondary" role="alert">
+                <h4 class="alert-heading" style="color:black;">{{ item.board_title }}</h4>
+                <p>内容：{{ item.board_about | linebreaksbr }}</p>
+                <p>作成日：{{ item.board_date }}</p>
+                <a href="{% url 'detail' item.pk %}" class="btn btn-secondary" active="" role="button" aria-pressed="true">掲示板を見る &raquo;</a>
+            </div>
+            {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock content%}

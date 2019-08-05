@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block customcss %}
+
+<style>
+  body {
+    padding-top: 2.5rem;
+  }
+</style>
+
+{% endblock customcss %}
+
+{% block content %}
+
+<div class="jumbotron">
+    <div class="container">
+        <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-purple rounded shadow-sm">
+            <div class="lh-100">
+                <h1 class="mb-0 lh-100" style="color:gray;">作成する掲示板の確認</h1>
+            </div>
+        </div>
+        <div class="my-3 p-3 bg-white rounded shadow-sm" mathod="POST">
+            <div class="alert alert-" role="alert">
+                <p style="color:black;">下記の内容で掲示板を作成しますか？</p>
+                <p>掲示板タイトル：</p>
+                <p>{{ ascertain_data.board_title }}</p>
+                <p>内容：</p>
+                <p>{{ ascertain_data.board_about | linebreaksbr }}</p>
+                <form>{% csrf_token %}
+                    <a href="{% url 'finish_board_make' %}" class="btn btn-primary btn-lg" active="" role="button" aria-pressed="true" name="answer">作成する</a>
+                    <a href="{% url 'create' %}" class="btn btn-primary btn-lg" active="" role="button" aria-pressed="true" name="answer">戻る</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content%}

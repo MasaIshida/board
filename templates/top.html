@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+
+{% block customcss %}
+<style>
+  body {
+    padding-top: 3.5rem;
+  }
+</style>
+{% endblock customcss %}
+
+
+
+{% block content %}
+
+  <!-- Main jumbotron for a primary marketing message or call to action -->
+<div class="jumbotron">
+  <div class="container">
+    <h1 class="display-3">外資系就活Board</h1>
+    <p>外資系企業への就職活動に向けた情報収集に活用！</p>
+  </div>
+</div>
+<div class="container alert-dark alert" role="alert">
+  <h2 class="display-5">現在の注目掲示板</h2>
+</div>
+<div class="container">
+  <!-- Example row of columns -->
+  <div class="row">
+    {% for item in object_list %}
+    <div class="col-md-4">
+      <h2>{{ item.board_title }}</h2>
+      <p>掲示板説明：{{ item.board_about | linebreaksbr }}</p>
+      <p>注目度：{{ item.board_view }} </p>
+      <p><a class="btn btn-secondary" href="{% url 'detail' item.pk %}" role="button">掲示板を見る &raquo;</a></p>
+    </div>
+    {% endfor %}
+  </div>
+  <hr>
+</div> <!-- /container -->
+
+{% endblock content%}
+

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block customcss %}
+<meta http-equiv="refresh" content="5;URL='http://127.0.0.1:8000/board/'"/>
+
+<style>
+  body {
+    padding-top: 2.5rem;
+  }
+</style>
+
+{% endblock customcss %}
+{% block content %}
+<div class="jumbotron">
+    <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-purple rounded shadow-sm">
+       <h1 class="mb-0 lh-100" style="color:gray;">{{ title }}</h1><p></p>
+    </div>
+    <div class="my-3 p-3 bg-white rounded shadow-sm">
+        <h3>{{ title }}を受け付けました。</h3>
+        <p>5秒後にトップページへ自動で戻ります</p>
+        ページが変わらない方は<a href="http://127.0.0.1:8000/board/">こちら</a>
+    </div>
+</div>
+
+{% endblock content%}
